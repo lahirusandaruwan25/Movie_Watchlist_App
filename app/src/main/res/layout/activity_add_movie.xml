@@ -36,7 +36,7 @@
             android:background="#3BA99D9D"
             android:hint="Genre"
             android:padding="15dp"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"/>
 
 
 <!--        <RatingBar-->

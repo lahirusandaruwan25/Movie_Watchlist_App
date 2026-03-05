@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Movie Watchlist App</string>
+    <string name="movie_watchlist_app">Movie Watchlist App</string>
+    <string name="welcome">Welcome</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register_button">Register</string>
+    <string name="login">Login</string>
+    <string name="new_user_register">New user? Register</string>
 </resources>

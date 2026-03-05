@@ -48,7 +48,9 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
             }
         });
-
+        tvRegister.setOnClickListener(v ->
+                startActivity(new Intent(this, RegisterActivity.class))
+        );
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

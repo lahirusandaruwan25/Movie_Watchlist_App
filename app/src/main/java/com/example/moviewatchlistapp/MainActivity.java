@@ -1,24 +1,48 @@
-package com.example.moviewatchlistapp;
+package com.example.movie_watchlist_app;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.content.Intent;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button btnBrowseMovies, btnAddMovie, btnWatchlist, btnLogout;
+    DatabaseHelper dbHelper;   // optional but good practice
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        // Initialize DB
+        dbHelper = new DatabaseHelper(this);
+
+        btnBrowseMovies = findViewById(R.id.btnBrowseMovies);
+        btnAddMovie = findViewById(R.id.btnAddMovie);
+        btnWatchlist = findViewById(R.id.btnWatchlist);
+        btnLogout = findViewById(R.id.btnLogout);
+
+        // Go Browse Movies Screen (TMDB API)
+        btnBrowseMovies.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, BrowseMoviesActivity.class));
+        });
+
+        // Go Add Movie Screen
+        btnAddMovie.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, AddMovieActivity.class));
+        });
+
+        // Go Watchlist Screen
+        btnWatchlist.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, WatchlistActivity.class));
+        });
+
+        // Logout → Back to Login
+        btnLogout.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
         });
     }
 }

@@ -17,7 +17,7 @@ public class AddMovieActivity extends AppCompatActivity {
     EditText etMovieName, etGenre, etReview;
     RatingBar ratingBar;
     Button btnSave;
-    DatabaseHelper db;
+    com.example.movie_watchlist_app.DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

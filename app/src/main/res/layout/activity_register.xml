@@ -8,31 +8,28 @@
     android:background="#EF000000"
     tools:context=".RegisterActivity">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textSize="48sp"
-        android:textStyle="bold|italic"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Name -->
 
     <!-- Email -->
+
+    <ImageView
+        android:id="@+id/imgTop"
+        android:layout_width="329dp"
+        android:layout_height="355dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/app_logo"
+        android:src="@drawable/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/etName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="332dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:autofillHints="name"
         android:background="#3BA99D9D"
@@ -42,9 +39,9 @@
         android:padding="12dp"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
+        app:layout_constraintTop_toBottomOf="@id/imgTop" />
 
     <EditText
         android:id="@+id/etEmail"

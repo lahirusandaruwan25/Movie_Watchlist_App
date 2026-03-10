@@ -3,7 +3,7 @@ package com.example.moviewatchlistapp;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
-public class movie {
+public class Movie {
     @SerializedName("id")
     private int id;
 

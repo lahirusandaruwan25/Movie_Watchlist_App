@@ -15,7 +15,7 @@ import java.util.List;
 public class WatchlistActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    DataBaseHelper db;
+    DatabaseHelper db;
     List<WatchlistMovie> movieList;
     WatchlistAdapter adapter;
     String userEmail;
@@ -32,7 +32,7 @@ public class WatchlistActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewWatchlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        db = new DataBaseHelper(this);
+        db = new DatabaseHelper(this);
         movieList = new ArrayList<>();
 
         loadWatchlist();

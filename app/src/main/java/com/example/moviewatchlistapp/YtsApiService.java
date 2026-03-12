@@ -4,7 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface APIService {
+public interface YtsApiService {
     @GET("list_movies.json")
-    Call<APIResponse> getMovies(@Query("limit") int limit, @Query("sort_by") String sortBy);
+    Call<YtsResponse> getMovies(@Query("limit") int limit, @Query("sort_by") String sortBy);
 }

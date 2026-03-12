@@ -1,4 +1,4 @@
-package com.example.movie_watchlist_app;
+package com.example.moviewatchlistapp;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

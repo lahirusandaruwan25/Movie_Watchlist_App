@@ -1,6 +1,5 @@
 package com.example.moviewatchlistapp;
 
-
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,17 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.movie_watchlist_app.DatabaseHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class WatchedMoviesActivity extends AppCompatActivity {
+public class WatchedMovieActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    DatabaseHelper db;
+    DataBaseHelper db;
     List<WatchlistMovie> movieList;
-    WatchedMoviesAdapter adapter;
+    WatchedMovieAdapter adapter;
     String userEmail;
 
     @Override
@@ -35,7 +32,7 @@ public class WatchedMoviesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvWatchedMovies);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        db = new DatabaseHelper(this);
+        db = new DataBaseHelper(this);
         movieList = new ArrayList<>();
 
         loadWatchedMovies();
@@ -66,7 +63,7 @@ public class WatchedMoviesActivity extends AppCompatActivity {
         }
         c.close();
 
-        adapter = new WatchedMoviesAdapter(movieList);
+        adapter = new WatchedMovieAdapter(movieList);
         recyclerView.setAdapter(adapter);
     }
 

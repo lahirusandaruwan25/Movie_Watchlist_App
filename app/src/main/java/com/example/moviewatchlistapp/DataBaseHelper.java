@@ -1,4 +1,4 @@
-package com.example.movie_watchlist_app;
+package com.example.moviewatchlistapp;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,22 +6,22 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "movieDB";
-    private static final int DATABASE_VERSION = 3; // Incremented version for schema change
+    private static final int DATABASE_VERSION = 3;
 
     private static final String TABLE_MOVIES = "movies";
 
     private static final String COL_ID = "id";
-    private static final String COL_USER_EMAIL = "user_email"; // New Column for User Data Separation
+    private static final String COL_USER_EMAIL = "user_email";
     private static final String COL_NAME = "name";
     private static final String COL_GENRE = "genre";
     private static final String COL_RATING = "rating";
     private static final String COL_REVIEW = "review";
     private static final String COL_IMAGE_URL = "image_url";
 
-    public DatabaseHelper(Context context) {
+    public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

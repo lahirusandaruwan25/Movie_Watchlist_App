@@ -1,6 +1,7 @@
 package com.example.moviewatchlistapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etEmail, etPassword;
     Button btnLogin;
     TextView tvRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +35,18 @@ public class LoginActivity extends AppCompatActivity {
 
             if (!isValidEmail(email)) {
                 etEmail.setError("Invalid Email");
-            }
-            else if (!isValidPassword(password)) {
+            } else if (!isValidPassword(password)) {
                 etPassword.setError("Password must be 8 chars, 1 capital letter, 1 number");
-            }
-            else if (email.isEmpty() || password.isEmpty()) {
+            } else if (email.isEmpty() || password.isEmpty()) {
                 etEmail.setError("All fields required");
                 etPassword.setError("All fields required");
-            }
-            else {
+            } else {
+                // Save user email in SharedPreferences
+                SharedPreferences pref = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("email", email);
+                editor.apply();
+
                 // Validation OK → Go to MainActivity
                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(i);
@@ -61,12 +66,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // Email Validation
-    public boolean isValidEmail(String email){
+    public boolean isValidEmail(String email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     // Password Validation
-    public boolean isValidPassword(String password){
+    public boolean isValidPassword(String password) {
         String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
         return password.matches(passwordPattern);
     }

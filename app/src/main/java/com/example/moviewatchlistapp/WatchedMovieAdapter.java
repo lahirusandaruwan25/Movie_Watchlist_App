@@ -1,4 +1,4 @@
-package com.example.movie_watchlist_app;
+package com.example.moviewatchlistapp;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
-public class WatchedMoviesAdapter extends RecyclerView.Adapter<WatchedMoviesAdapter.WatchedViewHolder> {
+public class WatchedMovieAdapter extends RecyclerView.Adapter<WatchedMovieAdapter.WatchedViewHolder> {
 
-    private List<com.example.movie_watchlist_app.WatchlistMovie> movieList;
-    private com.example.movie_watchlist_app.DatabaseHelper dbHelper;
+    private List<WatchlistMovie> movieList;
+    private DataBaseHelper dbHelper;
 
-    public WatchedMoviesAdapter(List<com.example.movie_watchlist_app.WatchlistMovie> movieList) {
+    public WatchedMovieAdapter(List<WatchlistMovie> movieList) {
         this.movieList = movieList;
     }
 
@@ -24,13 +24,13 @@ public class WatchedMoviesAdapter extends RecyclerView.Adapter<WatchedMoviesAdap
     @Override
     public WatchedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movies_watched, parent, false);
-        dbHelper = new com.example.movie_watchlist_app.DatabaseHelper(parent.getContext());
+        dbHelper = new DataBaseHelper(parent.getContext());
         return new WatchedViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull WatchedViewHolder holder, int position) {
-        com.example.movie_watchlist_app.WatchlistMovie movie = movieList.get(position);
+        WatchlistMovie movie = movieList.get(position);
         holder.tvTitle.setText(movie.getName());
         holder.tvGenre.setText(movie.getGenre());
         holder.rbRating.setRating(movie.getRating());

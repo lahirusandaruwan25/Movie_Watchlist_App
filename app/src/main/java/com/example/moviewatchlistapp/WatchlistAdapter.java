@@ -1,4 +1,4 @@
-package com.example.movie_watchlist_app;
+package com.example.moviewatchlistapp;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +16,7 @@ import java.util.List;
 public class WatchlistAdapter extends RecyclerView.Adapter<WatchlistAdapter.WatchlistViewHolder> {
 
     private List<WatchlistMovie> movieList;
-    private DatabaseHelper dbHelper;
+    private DataBaseHelper dbHelper;
 
     public WatchlistAdapter(List<WatchlistMovie> movieList) {
         this.movieList = movieList;
@@ -26,7 +26,7 @@ public class WatchlistAdapter extends RecyclerView.Adapter<WatchlistAdapter.Watc
     @Override
     public WatchlistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_watchlist, parent, false);
-        dbHelper = new DatabaseHelper(parent.getContext());
+        dbHelper = new DataBaseHelper(parent.getContext());
         return new WatchlistViewHolder(view);
     }
 

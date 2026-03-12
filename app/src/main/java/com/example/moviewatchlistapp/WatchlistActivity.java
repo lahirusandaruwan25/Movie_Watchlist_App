@@ -1,4 +1,4 @@
-package com.example.movie_watchlist_app;
+package com.example.moviewatchlistapp;
 
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -15,7 +15,7 @@ import java.util.List;
 public class WatchlistActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    DatabaseHelper db;
+    DataBaseHelper db;
     List<WatchlistMovie> movieList;
     WatchlistAdapter adapter;
     String userEmail;
@@ -32,7 +32,7 @@ public class WatchlistActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewWatchlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        db = new DatabaseHelper(this);
+        db = new DataBaseHelper(this);
         movieList = new ArrayList<>();
 
         loadWatchlist();

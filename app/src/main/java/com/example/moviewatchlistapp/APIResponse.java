@@ -1,4 +1,4 @@
-package com.example.movie_watchlist_app;
+package com.example.moviewatchlistapp;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;

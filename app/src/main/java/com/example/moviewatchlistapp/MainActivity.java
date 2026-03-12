@@ -1,4 +1,4 @@
-package com.example.movie_watchlist_app;
+package com.example.moviewatchlistapp;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,15 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     Button btnBrowseMovies, btnAddMovie, btnWatchlist, btnLogout;
-    DatabaseHelper dbHelper;   // optional but good practice
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Initialize DB
-        dbHelper = new DatabaseHelper(this);
 
         btnBrowseMovies = findViewById(R.id.btnBrowseMovies);
         btnAddMovie = findViewById(R.id.btnAddMovie);
@@ -26,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Go Browse Movies Screen (TMDB API)
         btnBrowseMovies.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, BrowseMoviesActivity.class));
+            startActivity(new Intent(MainActivity.this, BrowseMovieActivity.class));
         });
 
         // Go Add Movie Screen

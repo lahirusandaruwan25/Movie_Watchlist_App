@@ -1,4 +1,4 @@
-package com.example.movie_watchlist_app;
+package com.example.moviewatchlistapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,12 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private List<Movie> movieList;
-    private com.example.movie_watchlist_app.DatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
     private String userEmail;
 
     public MovieAdapter(List<Movie> movieList) {
@@ -28,7 +29,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);
-        dbHelper = new com.example.movie_watchlist_app.DatabaseHelper(parent.getContext());
+        dbHelper = new DatabaseHelper(parent.getContext());
 
         // Get user email from SharedPreferences
         SharedPreferences pref = parent.getContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);

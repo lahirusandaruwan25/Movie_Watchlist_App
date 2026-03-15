@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WatchedMovieActivity extends AppCompatActivity {
+public class WatchedMoviesActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    DataBaseHelper db;
+    DatabaseHelper db;
     List<WatchlistMovie> movieList;
-    WatchedMovieAdapter adapter;
+    WatchedMoviesAdapter adapter;
     String userEmail;
 
     @Override
@@ -32,7 +32,7 @@ public class WatchedMovieActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvWatchedMovies);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        db = new DataBaseHelper(this);
+        db = new DatabaseHelper(this);
         movieList = new ArrayList<>();
 
         loadWatchedMovies();
@@ -63,7 +63,7 @@ public class WatchedMovieActivity extends AppCompatActivity {
         }
         c.close();
 
-        adapter = new WatchedMovieAdapter(movieList);
+        adapter = new WatchedMoviesAdapter(movieList);
         recyclerView.setAdapter(adapter);
     }
 

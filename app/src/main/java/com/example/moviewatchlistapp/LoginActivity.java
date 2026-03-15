@@ -18,41 +18,50 @@ public class LoginActivity extends AppCompatActivity {
     EditText etEmail, etPassword;
     Button btnLogin;
     TextView tvRegister;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
+
+        db = new DatabaseHelper(this);
+
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         tvRegister = findViewById(R.id.tvRegister);
+
         btnLogin.setOnClickListener(v -> {
 
             String email = etEmail.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
 
-            if (!isValidEmail(email)) {
-                etEmail.setError("Invalid Email");
-            } else if (!isValidPassword(password)) {
-                etPassword.setError("Password must be 8 chars, 1 capital letter, 1 number");
-            } else if (email.isEmpty() || password.isEmpty()) {
-                etEmail.setError("All fields required");
-                etPassword.setError("All fields required");
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show();
             } else {
-                // Save user email in SharedPreferences
-                SharedPreferences pref = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString("email", email);
-                editor.apply();
+                // Check if user exists in database
+                boolean isValidUser = db.checkUser(email, password);
 
-                // Validation OK → Go to MainActivity
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(i);
-                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+                if (isValidUser) {
+                    // Save user email in SharedPreferences
+                    SharedPreferences pref = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("email", email);
+                    editor.apply();
+
+                    // Validation OK → Go to MainActivity
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
+                    Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Invalid Email or Password. Please Register first.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
         tvRegister.setOnClickListener(v ->
                 startActivity(new Intent(this, RegisterActivity.class))
         );
@@ -63,16 +72,5 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-    }
-
-    // Email Validation
-    public boolean isValidEmail(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    // Password Validation
-    public boolean isValidPassword(String password) {
-        String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
-        return password.matches(passwordPattern);
     }
 }

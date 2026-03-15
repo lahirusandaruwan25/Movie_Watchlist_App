@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -18,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BrowseMovieActivity extends AppCompatActivity {
+public class BrowseMoviesActivity extends AppCompatActivity {
 
     private RecyclerView rvMovies;
     private MovieAdapter adapter;
@@ -65,14 +66,14 @@ public class BrowseMovieActivity extends AppCompatActivity {
                     movieList.addAll(response.body().getMovies());
                     adapter.notifyDataSetChanged();
                 } else {
-                    Toast.makeText(BrowseMovieActivity.this, "Failed to load movies. Check API Key.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BrowseMoviesActivity.this, "Failed to load movies. Check API Key.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(BrowseMovieActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(BrowseMoviesActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

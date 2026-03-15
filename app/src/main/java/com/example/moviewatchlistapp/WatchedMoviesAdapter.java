@@ -9,22 +9,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
-public class WatchedMovieAdapter extends RecyclerView.Adapter<WatchedMovieAdapter.WatchedViewHolder> {
+public class WatchedMoviesAdapter extends RecyclerView.Adapter<WatchedMoviesAdapter.WatchedViewHolder> {
 
     private List<WatchlistMovie> movieList;
-    private DataBaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
 
-    public WatchedMovieAdapter(List<WatchlistMovie> movieList) {
+    public WatchedMoviesAdapter(List<WatchlistMovie> movieList) {
         this.movieList = movieList;
     }
 
     @NonNull
     @Override
     public WatchedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movies_watched, parent, false);
-        dbHelper = new DataBaseHelper(parent.getContext());
+        View view = LayoutInflater.from(parent.getContext()).inflate
+                (R.layout.movies_watched, parent, false);
+        dbHelper = new DatabaseHelper(parent.getContext());
         return new WatchedViewHolder(view);
     }
 

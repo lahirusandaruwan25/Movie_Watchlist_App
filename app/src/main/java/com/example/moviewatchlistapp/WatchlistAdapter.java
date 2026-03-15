@@ -11,12 +11,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class WatchlistAdapter extends RecyclerView.Adapter<WatchlistAdapter.WatchlistViewHolder> {
 
     private List<WatchlistMovie> movieList;
-    private DataBaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
 
     public WatchlistAdapter(List<WatchlistMovie> movieList) {
         this.movieList = movieList;
@@ -26,7 +27,7 @@ public class WatchlistAdapter extends RecyclerView.Adapter<WatchlistAdapter.Watc
     @Override
     public WatchlistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_watchlist, parent, false);
-        dbHelper = new DataBaseHelper(parent.getContext());
+        dbHelper = new DatabaseHelper(parent.getContext());
         return new WatchlistViewHolder(view);
     }
 

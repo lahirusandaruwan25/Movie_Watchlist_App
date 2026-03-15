@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/btnBrowseMovies"
-        android:text="Browse Movies"
+        android:text="Browse Movies (API)"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_dark"/>
@@ -23,6 +23,13 @@
     <Button
         android:id="@+id/btnWatchlist"
         android:text="View Watchlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_red_dark"/>
+
+    <Button
+        android:id="@+id/btnWatchedMovies"
+        android:text="Watched Movies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_dark"/>
